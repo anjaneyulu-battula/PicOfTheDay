@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19206" systemVersion="21A344" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="PicOfTheDayDB" representedClassName="PicOfTheDayDB" syncable="YES">
+        <attribute name="explanation" optional="YES" attributeType="String"/>
+        <attribute name="favouritedDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="fileName" optional="YES" attributeType="String"/>
+        <attribute name="isFavourite" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="mediaType" optional="YES" attributeType="String"/>
+        <attribute name="potdDate" optional="YES" attributeType="String"/>
+        <attribute name="serviceVersion" optional="YES" attributeType="String"/>
+        <attribute name="thumbnailURL" optional="YES" attributeType="String"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+    </entity>
+    <elements>
+        <element name="PicOfTheDayDB" positionX="-63" positionY="-9" width="128" height="164"/>
+    </elements>
+</model>

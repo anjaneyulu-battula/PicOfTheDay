@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7241EAB027E41F8600A3C372 /* PicOfTheDayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7241EAAF27E41F8600A3C372 /* PicOfTheDayViewModel.swift */; };
+		7242A67727E42002000665C0 /* FavouriteListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7242A67627E42002000665C0 /* FavouriteListViewController.swift */; };
+		7242A67927E4202F000665C0 /* FavouriteListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7242A67827E4202F000665C0 /* FavouriteListViewModel.swift */; };
+		7242A67D27E422D1000665C0 /* FavouriteListTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7242A67C27E422D1000665C0 /* FavouriteListTableCell.swift */; };
+		7242A68627E42609000665C0 /* PicOfTheDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7242A68527E42609000665C0 /* PicOfTheDay.swift */; };
 		724CE7BA27E2CB010083D847 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724CE7B927E2CB010083D847 /* AppDelegate.swift */; };
 		724CE7BC27E2CB010083D847 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724CE7BB27E2CB010083D847 /* SceneDelegate.swift */; };
 		724CE7BE27E2CB010083D847 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724CE7BD27E2CB010083D847 /* ViewController.swift */; };
@@ -17,6 +22,14 @@
 		724CE7D427E2CB020083D847 /* PicOfTheDayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724CE7D327E2CB020083D847 /* PicOfTheDayTests.swift */; };
 		724CE7DE27E2CB020083D847 /* PicOfTheDayUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724CE7DD27E2CB020083D847 /* PicOfTheDayUITests.swift */; };
 		724CE7E027E2CB020083D847 /* PicOfTheDayUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724CE7DF27E2CB020083D847 /* PicOfTheDayUITestsLaunchTests.swift */; };
+		724CE7EE27E2CBCB0083D847 /* POTDTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724CE7ED27E2CBCB0083D847 /* POTDTabBarController.swift */; };
+		724CE7F127E2CC110083D847 /* PicOfTheDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724CE7F027E2CC110083D847 /* PicOfTheDayViewController.swift */; };
+		724CE7F527E2CCB00083D847 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724CE7F427E2CCB00083D847 /* APIManager.swift */; };
+		724CE7FC27E2D5C00083D847 /* PicOfTheDayAPIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724CE7FB27E2D5C00083D847 /* PicOfTheDayAPIModel.swift */; };
+		724CE81427E300FB0083D847 /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724CE81327E300FB0083D847 /* DBManager.swift */; };
+		728C683E27E75E6000F8EEE1 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 728C683D27E75E6000F8EEE1 /* Utility.swift */; };
+		728C684A27E7926E00F8EEE1 /* PicOfTheDayDB+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 728C684827E7926E00F8EEE1 /* PicOfTheDayDB+CoreDataClass.swift */; };
+		728C684B27E7926E00F8EEE1 /* PicOfTheDayDB+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 728C684927E7926E00F8EEE1 /* PicOfTheDayDB+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +50,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7241EAAF27E41F8600A3C372 /* PicOfTheDayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicOfTheDayViewModel.swift; sourceTree = "<group>"; };
+		7242A67627E42002000665C0 /* FavouriteListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteListViewController.swift; sourceTree = "<group>"; };
+		7242A67827E4202F000665C0 /* FavouriteListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteListViewModel.swift; sourceTree = "<group>"; };
+		7242A67C27E422D1000665C0 /* FavouriteListTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteListTableCell.swift; sourceTree = "<group>"; };
+		7242A68527E42609000665C0 /* PicOfTheDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicOfTheDay.swift; sourceTree = "<group>"; };
 		724CE7B627E2CB010083D847 /* PicOfTheDay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PicOfTheDay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		724CE7B927E2CB010083D847 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		724CE7BB27E2CB010083D847 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -51,6 +69,14 @@
 		724CE7D927E2CB020083D847 /* PicOfTheDayUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PicOfTheDayUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		724CE7DD27E2CB020083D847 /* PicOfTheDayUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicOfTheDayUITests.swift; sourceTree = "<group>"; };
 		724CE7DF27E2CB020083D847 /* PicOfTheDayUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicOfTheDayUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		724CE7ED27E2CBCB0083D847 /* POTDTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POTDTabBarController.swift; sourceTree = "<group>"; };
+		724CE7F027E2CC110083D847 /* PicOfTheDayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicOfTheDayViewController.swift; sourceTree = "<group>"; };
+		724CE7F427E2CCB00083D847 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		724CE7FB27E2D5C00083D847 /* PicOfTheDayAPIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicOfTheDayAPIModel.swift; sourceTree = "<group>"; };
+		724CE81327E300FB0083D847 /* DBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
+		728C683D27E75E6000F8EEE1 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
+		728C684827E7926E00F8EEE1 /* PicOfTheDayDB+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PicOfTheDayDB+CoreDataClass.swift"; sourceTree = "<group>"; };
+		728C684927E7926E00F8EEE1 /* PicOfTheDayDB+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PicOfTheDayDB+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +104,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7241EAB127E41F9300A3C372 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7242A68527E42609000665C0 /* PicOfTheDay.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7241EAB227E41F9F00A3C372 /* FavouriteList */ = {
+			isa = PBXGroup;
+			children = (
+				7242A67627E42002000665C0 /* FavouriteListViewController.swift */,
+				7242A67827E4202F000665C0 /* FavouriteListViewModel.swift */,
+				7242A67C27E422D1000665C0 /* FavouriteListTableCell.swift */,
+			);
+			path = FavouriteList;
+			sourceTree = "<group>";
+		};
 		724CE7AD27E2CB010083D847 = {
 			isa = PBXGroup;
 			children = (
@@ -101,6 +145,7 @@
 		724CE7B827E2CB010083D847 /* PicOfTheDay */ = {
 			isa = PBXGroup;
 			children = (
+				728C683C27E75E5100F8EEE1 /* Utility */,
 				724CE7B927E2CB010083D847 /* AppDelegate.swift */,
 				724CE7BB27E2CB010083D847 /* SceneDelegate.swift */,
 				724CE7BD27E2CB010083D847 /* ViewController.swift */,
@@ -108,7 +153,12 @@
 				724CE7C527E2CB020083D847 /* Assets.xcassets */,
 				724CE7C727E2CB020083D847 /* LaunchScreen.storyboard */,
 				724CE7CA27E2CB020083D847 /* Info.plist */,
-				724CE7C227E2CB010083D847 /* PicOfTheDay.xcdatamodeld */,
+				724CE7EC27E2CB980083D847 /* POTDTabBarController */,
+				724CE7EF27E2CBE70083D847 /* POTDDetails */,
+				7241EAB227E41F9F00A3C372 /* FavouriteList */,
+				7241EAB127E41F9300A3C372 /* Model */,
+				724CE7F227E2CC950083D847 /* Network */,
+				724CE7FD27E2E0E00083D847 /* DB */,
 			);
 			path = PicOfTheDay;
 			sourceTree = "<group>";
@@ -128,6 +178,75 @@
 				724CE7DF27E2CB020083D847 /* PicOfTheDayUITestsLaunchTests.swift */,
 			);
 			path = PicOfTheDayUITests;
+			sourceTree = "<group>";
+		};
+		724CE7EC27E2CB980083D847 /* POTDTabBarController */ = {
+			isa = PBXGroup;
+			children = (
+				724CE7ED27E2CBCB0083D847 /* POTDTabBarController.swift */,
+			);
+			path = POTDTabBarController;
+			sourceTree = "<group>";
+		};
+		724CE7EF27E2CBE70083D847 /* POTDDetails */ = {
+			isa = PBXGroup;
+			children = (
+				724CE7F027E2CC110083D847 /* PicOfTheDayViewController.swift */,
+				7241EAAF27E41F8600A3C372 /* PicOfTheDayViewModel.swift */,
+			);
+			path = POTDDetails;
+			sourceTree = "<group>";
+		};
+		724CE7F227E2CC950083D847 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				724CE7F327E2CCA00083D847 /* APIManager */,
+				724CE7F627E2CCCD0083D847 /* Model */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		724CE7F327E2CCA00083D847 /* APIManager */ = {
+			isa = PBXGroup;
+			children = (
+				724CE7F427E2CCB00083D847 /* APIManager.swift */,
+			);
+			path = APIManager;
+			sourceTree = "<group>";
+		};
+		724CE7F627E2CCCD0083D847 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				724CE7FB27E2D5C00083D847 /* PicOfTheDayAPIModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		724CE7FD27E2E0E00083D847 /* DB */ = {
+			isa = PBXGroup;
+			children = (
+				724CE7C227E2CB010083D847 /* PicOfTheDay.xcdatamodeld */,
+				724CE81327E300FB0083D847 /* DBManager.swift */,
+				724CE80627E2F8750083D847 /* Model */,
+			);
+			path = DB;
+			sourceTree = "<group>";
+		};
+		724CE80627E2F8750083D847 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				728C684827E7926E00F8EEE1 /* PicOfTheDayDB+CoreDataClass.swift */,
+				728C684927E7926E00F8EEE1 /* PicOfTheDayDB+CoreDataProperties.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		728C683C27E75E5100F8EEE1 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				728C683D27E75E6000F8EEE1 /* Utility.swift */,
+			);
+			path = Utility;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,10 +380,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				724CE7F127E2CC110083D847 /* PicOfTheDayViewController.swift in Sources */,
+				724CE7EE27E2CBCB0083D847 /* POTDTabBarController.swift in Sources */,
+				728C684A27E7926E00F8EEE1 /* PicOfTheDayDB+CoreDataClass.swift in Sources */,
+				7242A67727E42002000665C0 /* FavouriteListViewController.swift in Sources */,
 				724CE7C427E2CB010083D847 /* PicOfTheDay.xcdatamodeld in Sources */,
+				7242A68627E42609000665C0 /* PicOfTheDay.swift in Sources */,
+				728C684B27E7926E00F8EEE1 /* PicOfTheDayDB+CoreDataProperties.swift in Sources */,
+				724CE7FC27E2D5C00083D847 /* PicOfTheDayAPIModel.swift in Sources */,
+				7242A67927E4202F000665C0 /* FavouriteListViewModel.swift in Sources */,
 				724CE7BE27E2CB010083D847 /* ViewController.swift in Sources */,
+				7241EAB027E41F8600A3C372 /* PicOfTheDayViewModel.swift in Sources */,
+				7242A67D27E422D1000665C0 /* FavouriteListTableCell.swift in Sources */,
 				724CE7BA27E2CB010083D847 /* AppDelegate.swift in Sources */,
 				724CE7BC27E2CB010083D847 /* SceneDelegate.swift in Sources */,
+				724CE7F527E2CCB00083D847 /* APIManager.swift in Sources */,
+				724CE81427E300FB0083D847 /* DBManager.swift in Sources */,
+				728C683E27E75E6000F8EEE1 /* Utility.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
