@@ -126,6 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				724CE7B827E2CB010083D847 /* PicOfTheDay */,
+				728C683C27E75E5100F8EEE1 /* Utility */,
 				724CE7D227E2CB020083D847 /* PicOfTheDayTests */,
 				724CE7DC27E2CB020083D847 /* PicOfTheDayUITests */,
 				724CE7B727E2CB010083D847 /* Products */,
@@ -145,7 +146,6 @@
 		724CE7B827E2CB010083D847 /* PicOfTheDay */ = {
 			isa = PBXGroup;
 			children = (
-				728C683C27E75E5100F8EEE1 /* Utility */,
 				724CE7B927E2CB010083D847 /* AppDelegate.swift */,
 				724CE7BB27E2CB010083D847 /* SceneDelegate.swift */,
 				724CE7BD27E2CB010083D847 /* ViewController.swift */,

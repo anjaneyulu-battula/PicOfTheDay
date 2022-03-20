@@ -12,6 +12,7 @@ class FavouriteListViewModel {
     var favouriteList = [PicOfTheDay]()
 
     func loadFavouriteList() {
+        favouriteList.removeAll()
         DBManager.shared.getFavouriteList { result in
             switch result {
             case .success(let favouriteListDB):
@@ -26,6 +27,19 @@ class FavouriteListViewModel {
                 }
             case .failure(let errorDetails):
                 break
+            }
+        }
+    }
+
+    func updateFavouritePicDetails(row: Int) {
+        var favouritePic = favouriteList[row]
+        favouritePic.isFavourite = false
+        DBManager.shared.updatePicOfTheDay(potd: favouritePic) { result in
+            switch result {
+            case .success():
+                break
+            case .failure(let errorDetails):
+                print("Show Some Error")
             }
         }
     }

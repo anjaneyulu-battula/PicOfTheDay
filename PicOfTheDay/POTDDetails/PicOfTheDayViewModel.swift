@@ -25,6 +25,9 @@ class PicOfTheDayViewModel {
     var enableUserIntDatePick: Bool {
         return isFromFavouriteList ? false : true
     }
+    var datePickerOpacity: Float {
+        return isFromFavouriteList ? 0.5 : 1.0
+    }
 
     init(picOfTheDay: PicOfTheDay,
          isFromFavouriteList: Bool = false,
@@ -63,12 +66,13 @@ class PicOfTheDayViewModel {
             switch result {
             case .success(let picOfTheDayDB):
                 if let picOfTheDayDB = picOfTheDayDB {
-                    weakSelf.picOfTheDay = PicOfTheDay(date: picOfTheDayDB.potdDate ?? "",
-                                                       explanation: picOfTheDayDB.explanation ?? "",
-                                                       title: picOfTheDayDB.title ?? "",
-                                                       fileName: picOfTheDayDB.fileName ?? "",
+                    weakSelf.picOfTheDay = PicOfTheDay(date: picOfTheDayDB.potdDate,
+                                                       explanation: picOfTheDayDB.explanation,
+                                                       title: picOfTheDayDB.title,
+                                                       fileName: picOfTheDayDB.fileName,
                                                        favouritedDate: picOfTheDayDB.favouritedDate ?? Date(),
                                                        isFavourite: picOfTheDayDB.isFavourite)
+                    isPicOfTheDayDataAvailable = true
                     weakSelf.picOfTheDayDetailsUpdate(.success)
                 } else {
                     weakSelf.getPicOfTheDayDataAPIWith(dateStr: dateStr)
@@ -145,6 +149,7 @@ class PicOfTheDayViewModel {
             switch result {
             case .success():
                 picOfTheDay.fileName = fileName
+                isPicOfTheDayDataAvailable = true
                 picOfTheDayDetailsUpdate(.success)
             case .failure(let errorDetails):
                 picOfTheDayDetailsUpdate(.failure(msg: errorDetails.msg))

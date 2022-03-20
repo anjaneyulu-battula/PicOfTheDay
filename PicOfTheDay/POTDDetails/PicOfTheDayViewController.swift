@@ -18,11 +18,19 @@ class PicOfTheDayViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var favouriteBarButtonItem: UIBarButtonItem!
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if viewModel.isPicOfTheDayDataAvailable {
+            dateSelected()
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        viewModel = PicOfTheDayViewModel(picOfTheDay: PicOfTheDay(favouritedDate: nil))
+        if viewModel == nil {
+            viewModel = PicOfTheDayViewModel(picOfTheDay: PicOfTheDay(favouritedDate: nil))
+        }
         registerPicOfTheDayDetailsUpdate()
 
         let formatter = DateFormatter()
@@ -36,8 +44,10 @@ class PicOfTheDayViewController: UIViewController {
         datePicker.addTarget(self, action: #selector(dateSelected), for: .valueChanged)
         descLabel.text = "--"
 
+
         if viewModel.isFromFavouriteList {
             datePicker.date = formatter.date(from: viewModel.picOfTheDay.date) ?? Date()
+            viewModel.isPicOfTheDayDataAvailable = true
             loadUIWithDetails()
         }
     }
@@ -59,7 +69,9 @@ class PicOfTheDayViewController: UIViewController {
         let dateStr = dateFormatter.string(from: datePicker.date)
         self.dismiss(animated: false) { [weak self] in
             guard let weakSelf = self else { return }
-            Utility.shared.showLoader(viewController: weakSelf)
+            DispatchQueue.main.async {
+                Utility.shared.showLoader(viewController: weakSelf)
+            }
             weakSelf.viewModel.getPicOfTheDayWith(dateStr: dateStr)
         }
     }
@@ -69,7 +81,7 @@ class PicOfTheDayViewController: UIViewController {
             guard let weakSelf = self else { return }
             switch status {
             case .success:
-                DispatchQueue.main.async {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                     weakSelf.loadUIWithDetails()
                     Utility.shared.hideLoader(viewController: weakSelf)
                 }
@@ -85,7 +97,7 @@ class PicOfTheDayViewController: UIViewController {
         self.descLabel.text = viewModel.picOfTheDay.explanation
         self.imageView.image = viewModel.apiManager.loadImageFromDiskWith(fileName: viewModel.picOfTheDay.fileName)
         self.datePicker.isUserInteractionEnabled = viewModel.enableUserIntDatePick
-//        favouriteBarButtonAction(favouriteBarButtonItem)
+        self.datePicker.layer.opacity = viewModel.datePickerOpacity
         favouriteBarButtonItem.tintColor = viewModel.picOfTheDay.isFavourite ? UIColor.systemBlue : UIColor.lightGray
     }
 }

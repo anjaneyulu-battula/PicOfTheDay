@@ -14,17 +14,30 @@ class FavouriteListViewController: UIViewController {
     var viewModel : FavouriteListViewModel!
 
     @IBOutlet weak var favouriteListTableView: UITableView!
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel.loadFavouriteList()
+        DispatchQueue.main.async { [weak self] in
+            guard let weakSelf = self else { return }
+            weakSelf.favouriteListTableView.reloadData()
+        }
+
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         viewModel = FavouriteListViewModel()
 
+        favouriteListTableView.allowsMultipleSelectionDuringEditing = false
         favouriteListTableView.dataSource = self
         favouriteListTableView.delegate = self
         favouriteListTableView.rowHeight = 100
 
-        viewModel.loadFavouriteList()
-        favouriteListTableView.reloadData()
+
+//        viewModel.loadFavouriteList()
+//        favouriteListTableView.reloadData()
 
         // Do any additional setup after loading the view.
     }
@@ -45,6 +58,11 @@ class FavouriteListViewController: UIViewController {
 // MARK: - UITableViewDataSource
 extension FavouriteListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if viewModel.favouriteList.count == 0 {
+            tableView.setEmptyMessage("No Data Available")
+        } else {
+            tableView.restore()
+        }
         return viewModel.favouriteList.count
     }
 
@@ -56,7 +74,18 @@ extension FavouriteListViewController: UITableViewDataSource {
         return cell
     }
 
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
 
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle == .delete) {
+            viewModel.updateFavouritePicDetails(row: indexPath.row)
+            let rowNumber : Int = indexPath.row
+            viewModel.favouriteList.remove(at: rowNumber)
+            tableView.deleteRows(at: [indexPath], with: .none)
+        }
+    }
 }
 
 // MARK: - UITableViewDelegate
@@ -69,5 +98,26 @@ extension FavouriteListViewController: UITableViewDelegate {
         picOfTheDayViewController.viewModel = PicOfTheDayViewModel(picOfTheDay: viewModel.favouriteList[indexPath.row], isFromFavouriteList: true)
         self.navigationController?.pushViewController(picOfTheDayViewController, animated: true)
 
+    }
+}
+
+
+extension UITableView {
+
+    func setEmptyMessage(_ message: String) {
+        let messageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.bounds.size.width, height: self.bounds.size.height))
+        messageLabel.text = message
+        messageLabel.textColor = .black
+        messageLabel.numberOfLines = 0
+        messageLabel.textAlignment = .center
+        messageLabel.sizeToFit()
+
+        self.backgroundView = messageLabel
+        self.separatorStyle = .none
+    }
+
+    func restore() {
+        self.backgroundView = nil
+        self.separatorStyle = .singleLine
     }
 }

@@ -101,9 +101,9 @@ class DBManager {
         let fetchRequest = PicOfTheDayDB.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "potdDate LIKE %@", potd.date)
         do {
-            if let potd = try persistentContainer.viewContext.fetch(fetchRequest).first {
-                potd.isFavourite = potd.isFavourite
-                potd.favouritedDate = potd.favouritedDate
+            if let picOfTheDayDB = try persistentContainer.viewContext.fetch(fetchRequest).first {
+                picOfTheDayDB.isFavourite = potd.isFavourite
+                picOfTheDayDB.favouritedDate = potd.isFavourite ? potd.favouritedDate : nil
                 saveContext(completion: completion)
             }
         } catch {
@@ -118,14 +118,7 @@ class DBManager {
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "favouritedDate", ascending: false)]
         do {
             let favouriteList = try persistentContainer.viewContext.fetch(fetchRequest)
-            saveContext { result in
-                switch result {
-                case .success():
-                    completion(.success(favouriteList))
-                case .failure(let errorDetails):
-                    completion(.failure(errorDetails))
-                }
-            }
+            completion(.success(favouriteList))
         } catch {
             completion(.failure(.saveOrUpdateDBError))
         }
