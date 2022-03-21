@@ -7,9 +7,17 @@
 
 import Foundation
 
+enum FavouriteListUpdateStatus {
+    case success
+    case failure(msg: String)
+}
+
 class FavouriteListViewModel {
 
     var favouriteList = [PicOfTheDay]()
+    
+    typealias FavouriteListUpdate = (FavouriteListUpdateStatus) -> Void
+    var favouriteListUpdate: FavouriteListUpdate!
 
     func loadFavouriteList() {
         favouriteList.removeAll()
@@ -25,8 +33,9 @@ class FavouriteListViewModel {
                                            isFavourite: favouriteDB.isFavourite)
                     favouriteList.append(potd)
                 }
+                favouriteListUpdate(.success)
             case .failure(let errorDetails):
-                break
+                favouriteListUpdate(.failure(msg: errorDetails.msg))
             }
         }
     }
@@ -39,7 +48,7 @@ class FavouriteListViewModel {
             case .success():
                 break
             case .failure(let errorDetails):
-                print("Show Some Error")
+                favouriteListUpdate(.failure(msg: errorDetails.msg))
             }
         }
     }

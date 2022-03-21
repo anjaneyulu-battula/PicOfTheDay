@@ -86,7 +86,7 @@ class PicOfTheDayViewController: UIViewController {
                     Utility.shared.hideLoader(viewController: weakSelf)
                 }
             case .failure(let msg):
-                print("Errro Msg: \(msg)")
+                Utility.shared.showAlert(viewController: weakSelf, msg: msg)
             }
 
         }

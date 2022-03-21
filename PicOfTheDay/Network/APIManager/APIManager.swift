@@ -26,19 +26,19 @@ enum PicOfTheDayError: Error {
         case .invalidUrl:
             return "Invalid URL"
         case .decodeError:
-            return "decodeError"
+            return "Decode Error"
         case .imageDownloadError:
-            return "imageDownloadError"
+            return "Image Download Error"
         case .failedRequest:
-            return "failedRequest"
+            return "Failed Request"
         case .requestTimedOut:
-            return "requestTimedOut"
+            return "Request TimedOut"
         case .saveImageDiskError:
-            return "saveImageDiskError"
+            return "Save image to disk Error"
         case .removeImageError:
-            return "removeImageError"
+            return "Remove Image Error"
         case .saveOrUpdateDBError:
-            return "saveOrUpdateDBError"
+            return "DB related Error"
         case .unknownError:
             return "unknownError"
         }
@@ -59,18 +59,11 @@ final class APIManager {
     func getPicOfTheDayDataWith(dateStr: String, completion: @escaping (Result<PicOfTheDayAPIModel, PicOfTheDayError>) -> Void) {
         if let url = URL(string: "https://api.nasa.gov/planetary/apod?api_key=\(apiKey)&date=\(dateStr)&thumbs=true") {
             let request = URLRequest(url: url)
-            URLSession.shared.dataTask(with: request) { [weak self] data, response, error in
+            URLSession.shared.dataTask(with: request) { data, response, error in
                 do {
-                    guard let weakSelf = self else { return }
                     let jsonDecoder = JSONDecoder()
                     if let data = data {
                         let picOfTheDayAPIModel = try jsonDecoder.decode(PicOfTheDayAPIModel.self, from: data)
-                        completion(.success(picOfTheDayAPIModel))
-
-                        guard let imageURL = URL(string: (picOfTheDayAPIModel.mediaType == .image) ? picOfTheDayAPIModel.url : picOfTheDayAPIModel.thumbnailURL ?? "") else {
-                            completion(.failure(.invalidUrl))
-                            return
-                        }
                         completion(.success(picOfTheDayAPIModel))
                     }
                 } catch {
@@ -128,7 +121,5 @@ final class APIManager {
         }
         return nil
     }
-
-
 
 }

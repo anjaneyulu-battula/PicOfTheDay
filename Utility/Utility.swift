@@ -30,4 +30,9 @@ final class Utility {
         viewController.dismiss(animated: false, completion: nil)
     }
 
+    func showAlert(viewController: UIViewController, msg: String) {
+        let alert = UIAlertController(title: "Alert", message: msg, preferredStyle: .alert)
+        viewController.present(alert, animated: true, completion: nil)
+    }
+
 }

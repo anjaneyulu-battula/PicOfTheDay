@@ -50,7 +50,7 @@ class PicOfTheDayViewModel {
                 case .success():
                     break
                 case .failure(let errorDetails):
-                    print("error details")
+                    picOfTheDayDetailsUpdate(.failure(msg: errorDetails.msg))
                 }
             }
         }
@@ -101,7 +101,7 @@ class PicOfTheDayViewModel {
                                      imageURL: imageURL,
                                      selectedDate: dateStr)
             case .failure(let errorDetails):
-                print("API Download Failure")
+                weakSelf.picOfTheDayDetailsUpdate(.failure(msg: errorDetails.msg))
             }
         }
     }
@@ -116,7 +116,7 @@ class PicOfTheDayViewModel {
                                          selectedDate: selectedDate,
                                          downloadLocation: downloadLocation)
                 case .failure(let errorDetails):
-                    print("API Download Failure")
+                weakSelf.picOfTheDayDetailsUpdate(.failure(msg: errorDetails.msg))
             }
         }
     }
@@ -135,7 +135,7 @@ class PicOfTheDayViewModel {
                 isPicOfTheDayDataAvailable = true
                 weakSelf.savePicDetailsToDB(picOfTheDayAPIModel: picOfTheDayAPIModel, fileName: fileName)
             case .failure(let errorDetails):
-                print("API Download Failure")
+                picOfTheDayDetailsUpdate(.failure(msg: errorDetails.msg))
             }
         }
     }

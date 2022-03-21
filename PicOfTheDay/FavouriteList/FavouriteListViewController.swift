@@ -18,17 +18,13 @@ class FavouriteListViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         viewModel.loadFavouriteList()
-        DispatchQueue.main.async { [weak self] in
-            guard let weakSelf = self else { return }
-            weakSelf.favouriteListTableView.reloadData()
-        }
-
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         viewModel = FavouriteListViewModel()
+        registerFavouriteListUpdate()
 
         favouriteListTableView.allowsMultipleSelectionDuringEditing = false
         favouriteListTableView.dataSource = self
@@ -40,6 +36,20 @@ class FavouriteListViewController: UIViewController {
 //        favouriteListTableView.reloadData()
 
         // Do any additional setup after loading the view.
+    }
+
+    func registerFavouriteListUpdate() {
+        viewModel.favouriteListUpdate = { [weak self] status in
+            DispatchQueue.main.async { [weak self] in
+                guard let weakSelf = self else { return }
+                switch status {
+                case .success:
+                    weakSelf.favouriteListTableView.reloadData()
+                case .failure(let msg):
+                    Utility.shared.showAlert(viewController: weakSelf, msg: msg)
+                }
+            }
+        }
     }
     
 
@@ -107,7 +117,7 @@ extension UITableView {
     func setEmptyMessage(_ message: String) {
         let messageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.bounds.size.width, height: self.bounds.size.height))
         messageLabel.text = message
-        messageLabel.textColor = .black
+        messageLabel.textColor = UIColor(named: "noDataColor")
         messageLabel.numberOfLines = 0
         messageLabel.textAlignment = .center
         messageLabel.sizeToFit()
