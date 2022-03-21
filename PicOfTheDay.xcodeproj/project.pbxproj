@@ -14,7 +14,6 @@
 		7242A68627E42609000665C0 /* PicOfTheDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7242A68527E42609000665C0 /* PicOfTheDay.swift */; };
 		724CE7BA27E2CB010083D847 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724CE7B927E2CB010083D847 /* AppDelegate.swift */; };
 		724CE7BC27E2CB010083D847 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724CE7BB27E2CB010083D847 /* SceneDelegate.swift */; };
-		724CE7BE27E2CB010083D847 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724CE7BD27E2CB010083D847 /* ViewController.swift */; };
 		724CE7C127E2CB010083D847 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 724CE7BF27E2CB010083D847 /* Main.storyboard */; };
 		724CE7C427E2CB010083D847 /* PicOfTheDay.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 724CE7C227E2CB010083D847 /* PicOfTheDay.xcdatamodeld */; };
 		724CE7C627E2CB020083D847 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 724CE7C527E2CB020083D847 /* Assets.xcassets */; };
@@ -58,7 +57,6 @@
 		724CE7B627E2CB010083D847 /* PicOfTheDay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PicOfTheDay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		724CE7B927E2CB010083D847 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		724CE7BB27E2CB010083D847 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		724CE7BD27E2CB010083D847 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		724CE7C027E2CB010083D847 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		724CE7C327E2CB010083D847 /* PicOfTheDay.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PicOfTheDay.xcdatamodel; sourceTree = "<group>"; };
 		724CE7C527E2CB020083D847 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -148,7 +146,6 @@
 			children = (
 				724CE7B927E2CB010083D847 /* AppDelegate.swift */,
 				724CE7BB27E2CB010083D847 /* SceneDelegate.swift */,
-				724CE7BD27E2CB010083D847 /* ViewController.swift */,
 				724CE7BF27E2CB010083D847 /* Main.storyboard */,
 				724CE7C527E2CB020083D847 /* Assets.xcassets */,
 				724CE7C727E2CB020083D847 /* LaunchScreen.storyboard */,
@@ -389,7 +386,6 @@
 				728C684B27E7926E00F8EEE1 /* PicOfTheDayDB+CoreDataProperties.swift in Sources */,
 				724CE7FC27E2D5C00083D847 /* PicOfTheDayAPIModel.swift in Sources */,
 				7242A67927E4202F000665C0 /* FavouriteListViewModel.swift in Sources */,
-				724CE7BE27E2CB010083D847 /* ViewController.swift in Sources */,
 				7241EAB027E41F8600A3C372 /* PicOfTheDayViewModel.swift in Sources */,
 				7242A67D27E422D1000665C0 /* FavouriteListTableCell.swift in Sources */,
 				724CE7BA27E2CB010083D847 /* AppDelegate.swift in Sources */,

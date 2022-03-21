@@ -30,12 +30,6 @@ class FavouriteListViewController: UIViewController {
         favouriteListTableView.dataSource = self
         favouriteListTableView.delegate = self
         favouriteListTableView.rowHeight = 100
-
-
-//        viewModel.loadFavouriteList()
-//        favouriteListTableView.reloadData()
-
-        // Do any additional setup after loading the view.
     }
 
     func registerFavouriteListUpdate() {
@@ -100,7 +94,6 @@ extension FavouriteListViewController: UITableViewDataSource {
 
 // MARK: - UITableViewDelegate
 extension FavouriteListViewController: UITableViewDelegate {
-
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
@@ -113,7 +106,6 @@ extension FavouriteListViewController: UITableViewDelegate {
 
 
 extension UITableView {
-
     func setEmptyMessage(_ message: String) {
         let messageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.bounds.size.width, height: self.bounds.size.height))
         messageLabel.text = message

@@ -12,7 +12,15 @@ final class Utility {
 
     static var shared = Utility()
 
-    private init() { }
+    var dateFormatter = DateFormatter()
+
+    private init() {
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+    }
+
+    func getDateStrWith(date: Date) -> String {
+        return dateFormatter.string(from: date)
+    }
 
     func showLoader(viewController: UIViewController) {
         let alert = UIAlertController(title: nil, message: "Loading Details...", preferredStyle: .alert)

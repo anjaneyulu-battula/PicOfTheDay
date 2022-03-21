@@ -7,16 +7,19 @@ Implemented Below Basic Features:
 - App cacheing information and displaying last updated information in case of network unavailability.
 
 
+
 Implemented Below Extra Credit Features:
 - Dark mode support
 - App handles different screen sizes, orientations
+
 
 
 Imp Points:
 - Used CoreData to save and retrieve the details from DB
 
 
-App Contains Below Screens
+
+App Contains Below Screens:
 - PicOfTheDay Screen
 	- Users can search for the picture for a date of their choice 
 	- Users can mark the picture as favourite

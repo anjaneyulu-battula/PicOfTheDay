@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 enum PicOfTheDayDeatilsUpdateStatus {
     case success
@@ -28,6 +29,12 @@ class PicOfTheDayViewModel {
     var datePickerOpacity: Float {
         return isFromFavouriteList ? 0.5 : 1.0
     }
+    var favBarButtonTintColor: UIColor {
+        return picOfTheDay.isFavourite ? .lightGray : .systemBlue
+    }
+
+    let minDate = Utility.shared.dateFormatter.date(from: "1995-06-16")
+    let maxDate = Calendar.current.date(byAdding: .day, value: -1, to: Date())!
 
     init(picOfTheDay: PicOfTheDay,
          isFromFavouriteList: Bool = false,
@@ -38,11 +45,7 @@ class PicOfTheDayViewModel {
     }
 
     func updateFavouritePicDetails() {
-        if picOfTheDay.isFavourite {
-            picOfTheDay.isFavourite = false
-        } else {
-            picOfTheDay.isFavourite = true
-        }
+        picOfTheDay.isFavourite = picOfTheDay.isFavourite ? false : true
         if isPicOfTheDayDataAvailable {
             picOfTheDay.favouritedDate = Date()
             DBManager.shared.updatePicOfTheDay(potd: picOfTheDay) { result in
@@ -81,8 +84,6 @@ class PicOfTheDayViewModel {
                 picOfTheDayDetailsUpdate(.failure(msg: errorDetails.msg))
             }
         }
-
-
     }
 
     func getPicOfTheDayDataAPIWith(dateStr: String) {
@@ -91,10 +92,12 @@ class PicOfTheDayViewModel {
             switch result {
             case .success(let picOfTheDayAPIModel):
                 weakSelf.picOfTheDay = PicOfTheDay(date: picOfTheDayAPIModel.poctdDate,
-                                          explanation: picOfTheDayAPIModel.explanation,
-                                                   title: picOfTheDayAPIModel.title, favouritedDate: nil)
+                                                   explanation: picOfTheDayAPIModel.explanation,
+                                                   title: picOfTheDayAPIModel.title,
+                                                   favouritedDate: nil)
 
                 guard let imageURL = URL(string: (picOfTheDayAPIModel.mediaType == .image) ? picOfTheDayAPIModel.url : picOfTheDayAPIModel.thumbnailURL ?? "") else {
+                    weakSelf.picOfTheDayDetailsUpdate(.failure(msg: PicOfTheDayError.invalidUrl.msg))
                     return
                 }
                 weakSelf.downloadPic(picOfTheDayAPIModel: picOfTheDayAPIModel,

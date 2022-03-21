@@ -54,8 +54,6 @@ final class APIManager {
     }
     static let shared = APIManager()
 
-
-
     func getPicOfTheDayDataWith(dateStr: String, completion: @escaping (Result<PicOfTheDayAPIModel, PicOfTheDayError>) -> Void) {
         if let url = URL(string: "https://api.nasa.gov/planetary/apod?api_key=\(apiKey)&date=\(dateStr)&thumbs=true") {
             let request = URLRequest(url: url)
@@ -83,8 +81,6 @@ final class APIManager {
                 completion(.success(location))
            }.resume()
     }
-
-
 
     func saveImage(imageName: String, location: URL, completion: (Result<String, PicOfTheDayError>) -> Void) {
      guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }

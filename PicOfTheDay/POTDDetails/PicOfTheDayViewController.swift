@@ -12,12 +12,15 @@ class PicOfTheDayViewController: UIViewController {
 
     var viewModel: PicOfTheDayViewModel!
 
+
+    @IBOutlet weak var selectDateLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descLabel: UILabel!
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var favouriteBarButtonItem: UIBarButtonItem!
 
+    // MARK: - View Life Cycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if viewModel.isPicOfTheDayDataAvailable {
@@ -33,62 +36,36 @@ class PicOfTheDayViewController: UIViewController {
         }
         registerPicOfTheDayDetailsUpdate()
 
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
-        let someDateTime = formatter.date(from: "1995-06-16")
-
+        selectDateLabel.text = viewModel.selectDateLabelValue
         datePicker.locale = .current
         datePicker.date = Date()
-        datePicker.maximumDate = Date() // Today date - 1
-        datePicker.minimumDate = someDateTime
+        datePicker.minimumDate = viewModel.minDate
+        datePicker.maximumDate = viewModel.maxDate
         datePicker.addTarget(self, action: #selector(dateSelected), for: .valueChanged)
         descLabel.text = "--"
 
-
         if viewModel.isFromFavouriteList {
-            datePicker.date = formatter.date(from: viewModel.picOfTheDay.date) ?? Date()
+            datePicker.date = Utility.shared.dateFormatter.date(from: viewModel.picOfTheDay.date) ?? Date()
             viewModel.isPicOfTheDayDataAvailable = true
             loadUIWithDetails()
         }
     }
 
+    // MARK: - Actions
     @IBAction func favouriteBarButtonAction(_ sender: Any) {
-        if viewModel.picOfTheDay.isFavourite {
-            favouriteBarButtonItem.tintColor = UIColor.lightGray
-        } else {
-            favouriteBarButtonItem.tintColor = UIColor.systemBlue
-        }
+        favouriteBarButtonItem.tintColor = viewModel.favBarButtonTintColor
         viewModel.updateFavouritePicDetails()
     }
 
 
     @objc
     func dateSelected() {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        let dateStr = dateFormatter.string(from: datePicker.date)
         self.dismiss(animated: false) { [weak self] in
             guard let weakSelf = self else { return }
             DispatchQueue.main.async {
                 Utility.shared.showLoader(viewController: weakSelf)
             }
-            weakSelf.viewModel.getPicOfTheDayWith(dateStr: dateStr)
-        }
-    }
-
-    func registerPicOfTheDayDetailsUpdate() {
-        viewModel.picOfTheDayDetailsUpdate = { [weak self] status in
-            guard let weakSelf = self else { return }
-            switch status {
-            case .success:
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                    weakSelf.loadUIWithDetails()
-                    Utility.shared.hideLoader(viewController: weakSelf)
-                }
-            case .failure(let msg):
-                Utility.shared.showAlert(viewController: weakSelf, msg: msg)
-            }
-
+            weakSelf.viewModel.getPicOfTheDayWith(dateStr: Utility.shared.getDateStrWith(date: weakSelf.datePicker.date))
         }
     }
 
@@ -99,5 +76,20 @@ class PicOfTheDayViewController: UIViewController {
         self.datePicker.isUserInteractionEnabled = viewModel.enableUserIntDatePick
         self.datePicker.layer.opacity = viewModel.datePickerOpacity
         favouriteBarButtonItem.tintColor = viewModel.picOfTheDay.isFavourite ? UIColor.systemBlue : UIColor.lightGray
+    }
+
+    func registerPicOfTheDayDetailsUpdate() {
+        viewModel.picOfTheDayDetailsUpdate = { [weak self] status in
+            guard let weakSelf = self else { return }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                Utility.shared.hideLoader(viewController: weakSelf)
+                switch status {
+                case .success:
+                    weakSelf.loadUIWithDetails()
+                case .failure(let msg):
+                    Utility.shared.showAlert(viewController: weakSelf, msg: msg)
+                }
+            }
+        }
     }
 }
