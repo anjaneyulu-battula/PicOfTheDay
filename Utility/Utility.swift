@@ -40,6 +40,9 @@ final class Utility {
 
     func showAlert(viewController: UIViewController, msg: String) {
         let alert = UIAlertController(title: "Alert", message: msg, preferredStyle: .alert)
+        let defaultAction = UIAlertAction(
+               title: "OK", style: .default, handler: nil)
+        alert.addAction(defaultAction)
         viewController.present(alert, animated: true, completion: nil)
     }
 

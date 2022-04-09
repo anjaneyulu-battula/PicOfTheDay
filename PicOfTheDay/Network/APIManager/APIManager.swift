@@ -20,6 +20,7 @@ enum PicOfTheDayError: Error {
     case removeImageError
     case saveOrUpdateDBError
     case unknownError
+    case networkError
 
     var msg: String {
         switch self {
@@ -39,6 +40,8 @@ enum PicOfTheDayError: Error {
             return "Remove Image Error"
         case .saveOrUpdateDBError:
             return "DB related Error"
+        case .networkError:
+            return "Network Error"
         case .unknownError:
             return "unknownError"
         }
@@ -60,7 +63,9 @@ final class APIManager {
             URLSession.shared.dataTask(with: request) { data, response, error in
                 do {
                     let jsonDecoder = JSONDecoder()
-                    if let data = data {
+                    if let _ = error {
+                        completion(.failure(.networkError))
+                    } else if let data = data {
                         let picOfTheDayAPIModel = try jsonDecoder.decode(PicOfTheDayAPIModel.self, from: data)
                         completion(.success(picOfTheDayAPIModel))
                     }
